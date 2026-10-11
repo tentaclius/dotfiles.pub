@@ -353,7 +353,7 @@ autocmd filetype csound :call CsoundHotkeys()
 "=================================================================================
 
 if PluginExists('vimwiki')
-  source ~/dotfiles/wrap-vimwiki.vim
+  source ~/dotfiles/vw-wrap.vim
 endif
 
 if PluginExists("coc.nvim") && !PluginExists("nvim-lspconfig") && 0
@@ -531,40 +531,6 @@ if PluginExists('calendar.vim') && PluginExists('vimwiki')
 
   command! -nargs=* Cal Calendar -position=here <args>
 endif
-
-" story templates
-function! IteqGoto(num)
-  VimwikiIndex
-  exe 'VimwikiGoto' '/hl/ITEQ-'..a:num
-  if getline(1) == ''
-    call append(0, '# [ITEQ-'..a:num..'](/hl/ITEQ-'..a:num..') - ')
-    call append(1, '- jira: https://support.hlag.com/servicedesk/browse/ITEQ-'..a:num)
-  endif
-endfunction
-function! IteqHints(ArgLead, CmdLine, CursorPos)
-  return glob(g:vimwiki_list[0].path .. '/hl/ITEQ-*.md', 0, 1)
-        \ ->map({i, v -> v->matchlist('.*-\(\d\+\)\.md$')})
-        \ ->filter({i, v -> !v->empty()})
-        \ ->map({i, v -> v[1]})
-        \ ->filter({i, v -> v->match('^'..a:ArgLead) != -1})
-endfunction
-command! -nargs=1 -complete=customlist,IteqHints ITEQ call IteqGoto(<f-args>)
-function! ItcrrGoto(num)
-  VimwikiIndex
-  exe 'VimwikiGoto' '/hl/ITCRR-'..a:num
-  if getline(1) == ''
-    call append(0, '# [ITCRR-'..a:num..'](/hl/ITCRR-'..a:num..') - ')
-    call append(1, '- jira: https://support.hlag.com/servicedesk/browse/ITCRR-'..a:num)
-  endif
-endfunction
-function! ItcrrHints(ArgLead, CmdLine, CursorPos)
-  return glob(g:vimwiki_list[0].path .. '/hl/ITCRR-*.md', 0, 1)
-        \ ->map({i, v -> v->matchlist('.*-\(\d\+\)\.md$')})
-        \ ->filter({i, v -> !v->empty()})
-        \ ->map({i, v -> v[1]})
-        \ ->filter({i, v -> v->match('^'..a:ArgLead) != -1})
-endfunction
-command! -nargs=1 -complete=customlist,ItcrrHints ITCRR call ItcrrGoto(<f-args>)
 
 " Startup
 au VimEnter * silent! call VimStartup()
