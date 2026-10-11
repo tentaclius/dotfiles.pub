@@ -1,6 +1,7 @@
 # Maje naładki dla VimWiki dla siabroŭ
 
 Prabačcie, niama času aformić heta ŭsio ŭ jakaści plugin.
+Kab adaptavać usio heta dla vašaj sistemy, moža spatrebicca šmat značeńniaŭ u hardkodzie pamianiać.
 Zaraz heta prosta nabor kanfiguracyjnych fajłaŭ.
 
 - `vimrc` - tolki padłučeńnie dadatkaŭ
@@ -10,6 +11,8 @@ Zaraz heta prosta nabor kanfiguracyjnych fajłaŭ.
 
 Kanfiguracyja davoli aktyŭna ŭžyvaje `BurntSushi/ripgrep`. U hetym vyhladzie "hard-coded" dla Windows, bo najčaściej
 užyvajecca na pracoŭnym kamputary. Dla Linux treba źmianić symbali katalohu ŭ niekatorych miescach.
+
+Pracuje tolki z Markdown sintaksisam. Praviercie naładki VimWiki ŭ fajle `vw-wrap.vim`.
 
 ## Kamandy dla VimWiki
 
